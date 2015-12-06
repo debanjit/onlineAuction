@@ -62,6 +62,8 @@ public class UpdateAddressDetails extends HttpServlet {
 		   ps.executeUpdate(); 
 		   if(accept.equals("Accept")){
 			   request.setAttribute("auctionid", request.getParameter("auctionid"));
+			   request.setAttribute("buyerid", (Integer)session.getAttribute("id"));
+			   response.setContentType("text/html"); 
 			   RequestDispatcher rd = request.getRequestDispatcher("EndOfAuction");
 			   rd.forward(request,response);
 			   

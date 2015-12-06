@@ -95,6 +95,11 @@ public class CreateAuction extends HttpServlet {
 					pst.setBlob(4, inputStream);				
 					pst.executeUpdate();
 					
+					/*String query1 = "insert into auction (sellerid,prodid,startdate,enddate,active) "
+				       		+ "values ((select userid from user where username=?),"
+				       		+ "(select max(prodid) from prodtype),"
+				       		+ "?,?,0)";*/
+					
 					PreparedStatement pst1 = conn.prepareStatement(query1);
 					pst1.setString(1, sName);
 					pst1.setDate(2, sDate);
