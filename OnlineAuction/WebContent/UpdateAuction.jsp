@@ -22,7 +22,7 @@
 	    <input id="startDate" name="startDate" value=<%=request.getAttribute("startdate") %>  tabindex="4" type="date" required="required">
 	    
 	    <p class="endDate"><label for="End Date">End Date</label></p> 
-	    <input id=""endDate"" name="endDate" value=<%=request.getAttribute("enddate") %>  tabindex="5" type="date" required="required">
+	    <input id="endDate" name="endDate" value=<%=request.getAttribute("enddate") %>  tabindex="5" type="date" required="required">
 	    <input type="hidden" name="auctionid" value="<%=request.getAttribute("auctionid") %>" />
 	    <input type="hidden" name="prodid" value="<%=request.getAttribute("prodid") %>" />
 	    <input type="hidden" name="active" value="<%=request.getAttribute("active") %>" />

@@ -167,5 +167,59 @@ public class LoginDao {
         }  
         return id;  
     }   
+    
+public static float getBalance(String n){
     	
+        Connection conn = null;  
+        PreparedStatement pst = null;  
+        ResultSet rs = null; 
+        int id = 0;
+        float balance =0;
+  
+        
+        try {  
+            
+        	Class.forName(driver);
+            conn = DriverManager  
+                    .getConnection(url + dbName, userName, password);  
+           id = getId(n);
+            pst = conn  
+                    .prepareStatement("select accountbalance from accountdetails where userid=?");  
+            pst.setInt(1, id);  
+            rs = pst.executeQuery(); 
+            if (rs.next())
+            {
+            	 balance = rs.getInt(1); 
+            }
+            
+            
+           
+  
+        } catch (Exception e) {  
+            System.out.println(e);  
+        } finally {  
+            if (conn != null) {  
+                try {  
+                    conn.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+            if (pst != null) {  
+                try {  
+                    pst.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+            if (rs != null) {  
+                try {  
+                    rs.close();  
+                } catch (SQLException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+        }  
+        return balance;  
+    }   
     }

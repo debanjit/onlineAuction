@@ -95,7 +95,6 @@ public class EndOfAuction extends HttpServlet {
 		   response.setContentType("text/html"); 
 		   RequestDispatcher rd = request.getRequestDispatcher("Rating.jsp");
 		   rd.forward(request,response);
-		out.println("Auction closes and moves to auction history.\n Seller account has been credited.\n Email sent to seller with shipping details");
 		} catch (Exception e) {
 		      e.printStackTrace();
 		 } 

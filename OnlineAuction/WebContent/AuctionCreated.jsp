@@ -8,7 +8,7 @@
 <body>  
     <h3>Auction Created</h3>  
 
-        Hello,  
+       
         
 </body>  
 </html>

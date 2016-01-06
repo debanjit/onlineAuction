@@ -12,13 +12,15 @@
         <%=session.getAttribute("name")%></h4> 
         
        
-<a href="CreateAuction.jsp">Create Auction</a>
 
 <br> </br>
+<form action="CreateAuction.jsp" method="get">
+                   <input type="submit" value="Create Auction" />
+                   </form> 
 <form action="UpdateAccount.jsp" method="get">
                    <input type="submit" value="Update Account Details" />
                    </form>  
-      <form action="/MyAuctions" method="get">
+      <form action="MyAuctions" method="get">
                    <input type="submit" value="My Auction" />
                    </form>      
         

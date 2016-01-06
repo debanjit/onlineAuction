@@ -10,8 +10,9 @@
     <h4>  
         Hello,  
         <%=session.getAttribute("name")%></h4> 
+        Current Account Balance  <%=session.getAttribute("balance")%><br/>
         <%
-      //  int id = (Integer)session.getAttribute("id");
+      int id = (Integer)session.getAttribute("id");
         try {
             Connection conn = null;  
 	        PreparedStatement pst = null;  
@@ -22,9 +23,11 @@
                     .getConnection("jdbc:mysql://localhost:3306/form", "root", "nainital"); 
             
 	   String query = "select prodid from prodtype where prodid in (select prodid from auction where active=1)";
-	 // pst.setInt(1, '1');
+	//  pst.setInt(1, id);
 	  pst = conn.prepareStatement(query);
 	    rs = pst.executeQuery();
+	    if(rs != null)
+	    {
 	    while(rs.next())
 	    {
 	    	int Id = rs.getInt(1); %>
@@ -34,13 +37,19 @@
 	 </a>
 
 	 <% 
-	    } }
+	    
+	    }
+	    }  else %> No live auctions <%
+	  
+	    }
 	        catch (SQLException e) {
 	        	e.printStackTrace();
 		  } %>
 		  
 <br/><br/>
-<a href="CreateAuction.jsp">Create Auction</a>
+<form action="CreateAuction.jsp" method="get">
+                   <input type="submit" value="Create Auction" />
+                   </form> 
 <form action="UpdateAccount.jsp" method="get">
                    <input type="submit" value="Update Account Details" />
                    </form>  

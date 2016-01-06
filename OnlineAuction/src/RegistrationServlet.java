@@ -217,6 +217,8 @@ public class RegistrationServlet extends HttpServlet {
 	            					   
 	            				        	int id=LoginDao.getId(username);
 	            				            session.setAttribute("id", id);
+	            				            float balance = LoginDao.getBalance(username);
+	            				            session.setAttribute("balance", balance);
 	            				            
 	            					   switch(type){
 	            			        	

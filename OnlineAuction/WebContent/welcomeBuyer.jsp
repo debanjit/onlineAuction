@@ -10,6 +10,7 @@
     <h4>  
         Hello,  
         <%=session.getAttribute("name")%></h4> 
+         Current Account Balance  <%=session.getAttribute("balance")%><br/>
         <%
         try {
             Connection conn = null;  
@@ -22,17 +23,20 @@
             
 	    pst = conn.prepareStatement("select prodid from prodtype where prodid in (select prodid from auction where active=1)");  
 	    rs = pst.executeQuery();
+	    if(rs != null)
+	    {
 	    while(rs.next())
-	     	   {
-	    	   	int Id = rs.getInt(1); %>
-	    	   	<a href="productbid.jsp?Id=<%=Id%>">
-	    	       <img src=GetPhoto?Id=<%=Id%> alt="Mountain View" style="width:304px;height:228px;"
-	    	onError="loadImage()" onAbort="loadImage()" />
-	    	</a>
+	    {
+	    	int Id = rs.getInt(1); %>
+	    	<a href="productbid.jsp?Id=<%=Id%>">
+	        <img src=GetPhoto?Id=<%=Id%> alt="Mountain View" style="width:304px;height:228px;"
+	 onError="loadImage()" onAbort="loadImage()" />
+	 </a>
 
-	    	<% 
-	    	   } 
-        }
+	 <% 
+	    }
+	    }  else %> No live auctions <%
+	    }
 	        catch (SQLException e) {
 	        	e.printStackTrace();
 		  } %>

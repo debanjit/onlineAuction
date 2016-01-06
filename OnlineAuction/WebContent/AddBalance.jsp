@@ -57,7 +57,7 @@ Please confirm your card details and balance to be added:
 					  <option value="2025">2025</option>
 					  </select><br/><br/>
 	 	   			Security/CVV Number*<br>
-	 	   			<input id="cvv" name="cvv" tabindex="3" type="text" maxlength="3" required="required">
+	 	   			<input id="cvv" name="cvv" tabindex="3" type="password" maxlength="3" required="required">
 	 	   			<br/><br/>
 	 	   			Balance to be added:<br/>
 	 	   			<input id="balance" name="balance" tabindex="4" type="text" required="required"><br>

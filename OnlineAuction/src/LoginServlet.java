@@ -29,6 +29,8 @@ public class LoginServlet extends HttpServlet{
         	int id=LoginDao.getId(n);
         	session.setAttribute("name", n);
             session.setAttribute("id", id);
+            float balance = LoginDao.getBalance(n);
+            session.setAttribute("balance",balance);
         }
         
   

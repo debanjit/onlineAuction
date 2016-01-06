@@ -92,11 +92,10 @@ public class ProductBid extends HttpServlet {
 			
 			if(bidvalue>highestbid)
 			{
-				if ((currentbalance + pastbid)>= bidvalue)
-				{
-					
-					// update the accountdetails
-						float xx = currentbalance + pastbid - bidvalue;
+				if ((currentbalance + pastbid)>= bidvalue && (currentbalance + pastbid - bidvalue>=minprice))
+						// update the accountdetails
+                    {
+					float xx = currentbalance + pastbid - bidvalue;
 					String query3 ="update accountdetails"
 							+ " set accountbalance = ?"
 							+ "where userid = ?";
@@ -115,17 +114,19 @@ public class ProductBid extends HttpServlet {
 	                rd.forward(request,response);
 					}				
 				else{
-					out.println("not sufficient balance");
+					out.println("Error in placing bid. Please check account balance and/or minimum bid");
 					}
 			}
 			else
 			{
-				out.println("meet minimum bid");
+				out.println("Error in placing bid. Please check account balance and/or minimum bid");
 			
 			}
 		}						
 		
 			else{
+				if((currentbalance > minprice) && (currentbalance  - bidvalue>=0))
+				{
 				if(((highestbid==0) && (bidvalue>minprice)) || ((highestbid>0) && (bidvalue>highestbid)))
 				{									
 				String query5 = "select auctionid from auction where prodid = ?";
@@ -160,11 +161,11 @@ public class ProductBid extends HttpServlet {
 	                rd.forward(request,response);
 					
 			} else{
-			     out.println("not enough funds");
+			     out.println("Error in placing bid. Please check account balance and/or minimum bid");
 				}			
 				
-			}else {
-				out.println("please match minimum bid");
+			}}else {
+				out.println("Error in placing bid. Please check account balance and/or minimum bid");
 				}
 					
 			}

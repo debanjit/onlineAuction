@@ -20,10 +20,10 @@ public class RateSeller extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String aid = (request.getAttribute("auctionid").toString());
-		int auctionid = Integer.parseInt(aid);
-		String bid = (request.getAttribute("buyerid").toString());
-		int buyerid = Integer.parseInt(bid);
+		String auction = request.getParameter("aid");		
+		int auctionid = Integer.parseInt(auction);
+		String buyer = request.getParameter("bid");
+		int buyerid = Integer.parseInt(buyer);
 		int sellerid =0;
 		float rating = Float.parseFloat(request.getParameter("rating"));
 		PrintWriter out = response.getWriter();
@@ -35,7 +35,7 @@ public class RateSeller extends HttpServlet {
 	    String password = "nainital";
 	    
 	    
-	    try {
+	   try {
 	    	Class.forName(driver);
 		    Connection conn= DriverManager.getConnection(url, userName, password);
 	       String query = "select sellerid from auction where auctionid = ?";
@@ -49,8 +49,10 @@ public class RateSeller extends HttpServlet {
 	       CallableStatement cstmt = conn.prepareCall (SQL);
 	       cstmt.setInt(1,sellerid);
 	       cstmt.setFloat(2, rating);
+	       cstmt.execute();
+	       conn.close();
 	       
-	   /* ResultSet rs = cstmt.getResultSet(); */
+	       out.println("Rating submitted");
 	       
 	    }
 	    catch (SQLException | ClassNotFoundException e) {

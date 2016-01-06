@@ -105,7 +105,7 @@
 					  <option value="2025">2025</option>
 					  </select><br><br>
 	 	   			Security/CVV Number*<br><br>
-	 	   			<input id="cvv" name="cvv" tabindex="23" type="text" maxlength="3" required="required">
+	 	   			<input id="cvv" name="cvv" tabindex="23" type="password" maxlength="3" required="required">
 	 	   			<br></br>
 	 	   			
 	 	   			<p class="bankaccount"><label for="bank account"> Bank Account Details</label></p>
